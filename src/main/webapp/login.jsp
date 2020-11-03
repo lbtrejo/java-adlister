@@ -15,6 +15,7 @@
 <html>
 <head>
     <title>Login Form</title>
+    <%@include file="partials/head.jsp"%>
 </head>
 <body>
     <h1>User Login</h1>
