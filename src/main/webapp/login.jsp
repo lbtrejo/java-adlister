@@ -11,6 +11,7 @@
 <%--<% username = request.getParameter("username"); %>--%>
 <%--<% password = request.getParameter("password"); %>--%>
 <%--<% if (username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("password")) { response.sendRedirect("/profile.jsp");}%>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Login Form</title>
@@ -36,5 +37,11 @@
     <p>"method" attribute: <%= request.getMethod() %></p>
     <p>User-Agent header: <%= request.getHeader("user-agent") %></p>
     <p>User-Agent EL header: ${header["user-agent"]}</p>
+
+    <c:choose>
+        <c:when test="${param.username == 'admin' && param.password == 'password'}">
+            <% response.sendRedirect("/profile.jsp"); %>
+        </c:when>
+    </c:choose>
 </body>
 </html>
