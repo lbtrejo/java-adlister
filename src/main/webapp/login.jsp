@@ -11,7 +11,20 @@
 <%--<% username = request.getParameter("username"); %>--%>
 <%--<% password = request.getParameter("password"); %>--%>
 <%--<% if (username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("password")) { response.sendRedirect("/profile.jsp");}%>--%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%--Better approach on walkthrough--%>
+<%
+    if (request.getMethod().equalsIgnoreCase("post")){
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        if (username.equalsIgnoreCase("admin") && password.equals("password")){
+            response.sendRedirect("/profile.jsp");
+        }
+    }
+%>
+
+<%-- JSTL approach --%>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <html>
 <head>
     <title>Login Form</title>
@@ -39,10 +52,10 @@
     <p>User-Agent header: <%= request.getHeader("user-agent") %></p>
     <p>User-Agent EL header: ${header["user-agent"]}</p>
 
-    <c:choose>
-        <c:when test="${param.username == 'admin' && param.password == 'password'}">
-            <% response.sendRedirect("/profile.jsp"); %>
-        </c:when>
-    </c:choose>
-</body>
+<%--    <c:choose>--%>
+<%--        <c:when test="${param.username.equalsIgnoreCase('admin') && param.password.equals('password')}">--%>
+<%--            <% response.sendRedirect("/profile.jsp"); %>--%>
+<%--        </c:when>--%>
+<%--    </c:choose>--%>
+<%--</body>--%>
 </html>
