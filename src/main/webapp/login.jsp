@@ -18,7 +18,7 @@
                 <label for="password" class="text-green">Password</label>
                 <input id="password" name="password" class="form-control" type="password">
             </div>
-            <input type="submit" class="btn btn-primary btn-block bg-dark text-blue" value="Log In">
+            <input type="submit" class="btn btn-success btn-block" value="Log In">
         </form>
     </div>
 </body>
