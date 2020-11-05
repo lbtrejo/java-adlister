@@ -5,20 +5,20 @@
         <jsp:param name="title" value="Please Log In" />
     </jsp:include>
 </head>
-<body>
+<body class="bg-dark">
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
-        <h1>Please Log In</h1>
+        <h1 class="text-red">Please Log In</h1>
         <form action="/login" method="POST">
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username" class="text-green">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password" class="text-green">Password</label>
                 <input id="password" name="password" class="form-control" type="password">
             </div>
-            <input type="submit" class="btn btn-primary btn-block" value="Log In">
+            <input type="submit" class="btn btn-primary btn-block bg-dark text-blue" value="Log In">
         </form>
     </div>
 </body>

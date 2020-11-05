@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "AdsListingServlet", urlPatterns = "/ads")
 public class AdsListingServlet extends HttpServlet {
@@ -12,6 +13,14 @@ public class AdsListingServlet extends HttpServlet {
 //    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // Use the factory to get the Dao Object
+        Ads adsDao = DaoFactory.getAdsDao();
+
+        // Use a method on the DAO to populate the ad list
+        List<Ad> ads = adsDao.all();
+
+        request.setAttribute("ads", ads);
         request.getRequestDispatcher("/ads/index.jsp").forward(request, response);
     }
 }
