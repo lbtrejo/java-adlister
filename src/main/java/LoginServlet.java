@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
         if (validAttempt) {
             session.setAttribute("isAdmin", true);
             session.setAttribute("user", "admin");
+            session.removeAttribute("error");
             response.sendRedirect("/profile");
         } else {
             session.setAttribute("error", "Invalid username or password");
