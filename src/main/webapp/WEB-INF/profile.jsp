@@ -12,6 +12,12 @@
         <h1>Viewing ${user}'s profile.</h1>
         <p>Is an admin: ${isAdmin}</p>
     </div>
+    <div class="container">
+        <form action="/logout" method="GET">
+            <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+    </div>
+
 
 </body>
 </html>
