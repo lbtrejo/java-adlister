@@ -5,12 +5,12 @@ import com.mysql.cj.jdbc.Driver;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLAdsDAO implements Ads {
+public class MySQLAdsDao implements Ads {
     private Connection connection = null;
     private Config config = new Config();
     private List<Ad> ads;
 
-    public MySQLAdsDAO(){
+    public MySQLAdsDao(){
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
@@ -31,18 +31,20 @@ public class MySQLAdsDAO implements Ads {
         try {
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM ads");
-            rs.next();
-            System.out.println("rs.getString(\"title\") = " + rs.getString("title"));
-            System.out.println("rs.getString(\"description\") = " + rs.getString("description"));
-            rs.next();
-            System.out.println("rs.getString(\"title\") = " + rs.getString("title"));
-            System.out.println("rs.getString(\"description\") = " + rs.getString("description"));
+            while(rs.next()){
+                ads.add(new Ad(
+                        rs.getLong("id"),
+                        rs.getLong("user_id"),
+                        rs.getString("title"),
+                        rs.getString("description")
+                ));
+            }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-        return null;
+        return ads;
     }
 
     @Override
